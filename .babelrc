@@ -1,0 +1,20 @@
+{
+    "presets": [
+        [
+			"@babel/preset-env",
+			{
+				"targets": {},
+				// "useBuiltIns": "usage",
+				"useBuiltIns": "entry",
+				// "loose": true,
+				// "debug": false
+			}
+		]
+      
+    ],
+    // "plugins": [
+    //   "transform-decorators-legacy",
+    //   "transform-class-properties"
+    // ]
+  }
+  
