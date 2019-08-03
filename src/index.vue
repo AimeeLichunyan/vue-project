@@ -1,57 +1,31 @@
 <template>
-    <div>
-        <p>学习处理用户输入</p>
-        <p>{{message}}</p>
-        <button v-on:click="reverseMessage">反转消息</button>
+    
+    <div class="index">
         <div>
-            <p>双向绑定</p>
-            <p>{{message}}</p>
-            <input type="text" v-model="message">
+            <leftMenu />
         </div>
-        <com />
-        <dataAndWays />
-        <lifeCycle />
-        <htmlVue />
-        <computedWatch />
-        <attentionItem />
-        <formVue />
-        <componentVue />
-        <!-- <button-counter /> -->
+        <div>
+            <homeMain />
+        </div>
     </div>
 </template>
 <script>
-import com from './learning/component.vue'
-import dataAndWays from './learning/dataAndWays.vue'
-import lifeCycle from './learning/lifeCycle.vue'
-import htmlVue from './learning/html.vue'
-import computedWatch from './learning/computedWatch.vue'
-import attentionItem from './learning/attentionItem.vue'
-import formVue from './learning/form.vue'
-import componentVue from './learning/componentVue.vue'
+import leftMenu from './home/left';
+import homeMain from './home/homeMain'
 export default {
-    name:'index',
-    data() {
-        return {
-            message: 'this is a message'
-        }
-    },
+    name: 'index',
     components: {
-        com,
-        dataAndWays,
-        lifeCycle,
-        htmlVue,
-        computedWatch,
-        attentionItem,
-        formVue,
-        componentVue
-    },
-    methods: {
-        reverseMessage() {
-            this.message = this.message.split('').reverse().join('');
-        }
+        leftMenu,
+        homeMain,
     }
 }
 </script>
 <style lang="less">
-
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .index {
+        display: flex;
+    }
 </style>

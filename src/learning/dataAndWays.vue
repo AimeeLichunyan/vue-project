@@ -4,6 +4,7 @@
          <p>{{ data.foo }}</p>
         <!-- 这里的 `foo` 不会更新！ -->
         <button v-on:click="data.foo = 'baz'">Change it</button>
+        <!-- <my-conponent /> -->
     </div>
 </template>
 <script>

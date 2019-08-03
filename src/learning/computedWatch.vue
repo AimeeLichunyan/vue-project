@@ -67,20 +67,20 @@ export default {
             console.log(this.firstName + this.lastName)
             return this.firstName + this.lastName
         },
-        numCount() { 
-            if(this.num > 10) {
-                return '过头了哈'
-            } else {
-                return ''
-            }
-        }
+        // numCount() { 
+        //     if(this.num > 10) {
+        //         return '过头了哈'
+        //     } else {
+        //         return ''
+        //     }
+        // }
     },
     methods: {
         downCount() {
             let _this = this
-          window.interval = setInterval(() => {
-                this.num ++ ;
-            }, 1000);
+        //   window.interval = setInterval(() => {
+        //         this.num ++ ;
+        //     }, 1000);
         },
         useCount() {
             console.log('numCount',this.numCount)
