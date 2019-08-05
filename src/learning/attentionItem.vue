@@ -4,7 +4,7 @@
 
         <div>
             <p>显示过滤后的结果: 使用computed</p>
-            <p v-for="item in evenNumbers" :key="item">{{item}}</p>
+            <!-- <p v-for="item in evenNumbers" :key="item">{{item}}</p> -->
             <p>显示过滤后的结果: 使用methods</p>
             <p v-for="item in even()" :key="item">{{item}}</p>
         </div>

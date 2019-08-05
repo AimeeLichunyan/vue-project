@@ -14,6 +14,13 @@
         <htmlVue />
         <!-- <computedWatch /> -->
         <attentionItem />
+        <p>我试试能不能用inline-template</p>
+        <formVue inline-template> 
+            <div>
+                <p>These are compiled as the component's own template.</p>
+                <p>Not parent's transclusion content.</p>
+            </div>
+        </formVue>
         <formVue />
         <componentVue ref="componentVue" />
         <!-- <my-conponent /> -->
@@ -31,10 +38,23 @@
          <!-- sync的使用实例 -->
          <self :shwo.sync="isShow" />
          <button @click="clickChange">点我看看</button>
-         <div ref="ss">
-             <p>我在干嘛</p>
+         <div ref="ss" >
+             <p @click="foo2">我在干嘛</p>
          </div>
-       
+
+         <!-- <other /> -->
+        <input type="text" v-focus>
+
+        <div v-demo:foo.a.b="message">
+
+        </div>
+        <div>
+            <p v-pin="200">我的自定义css，看看效果如何</p>
+        </div>
+
+        <div>
+            <p v-pin2:[direction]="500">我的自定义css，看看效果如何,但是我是灵活多变的</p>
+        </div>
     </div>
 </template>
 <script>
@@ -47,9 +67,22 @@ import attentionItem from './learning/attentionItem.vue'
 import formVue from './learning/form.vue'
 import componentVue from './learning/componentVue.vue'
 import self from './learning/self.vue'
+// import other from './learning/other.vue'
+
+import mixin from './learning/mixin.js'
 // import slotVue from './learning/slotVue.vue'
 export default {
     name:'index',
+    mixins: [mixin],
+    // 自定义指令
+    directives: {
+        focus: {
+            inserted: function(el) {
+                console.log('el',el)
+                el.focus()
+            }
+        }
+    },
     data() {
         return {
             message: '我是老祖宗',
@@ -60,12 +93,22 @@ export default {
             },
             value: '',
             label: '',
-            isShow: true
+            isShow: true,
+            direction: 'top'
         }
     },
+    created() {
+         console.log('data',this)
+         console.log('钩子函数被调用')
+         
+    },
     mounted() {
-        console.log('refs',this.$refs.componentVue)
-         console.log('refs2',this.$refs.ss)
+        console.log('data',this)
+        this.bar();
+        this.conflicting()
+        // this.foo2();
+        // console.log('refs',this.$refs.componentVue)
+        //  console.log('refs2',this.$refs.ss)
     },
     components: {
         com,
@@ -105,6 +148,12 @@ export default {
             
             this.isShow = !this.isShow
             console.log(this.isShow)
+        },
+        bar: function() {
+            console.log('bar')
+        },
+        conflicting: function() {
+            console.log('from self')
         }
     }
 }
